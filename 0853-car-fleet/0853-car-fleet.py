@@ -1,26 +1,12 @@
 class Solution:
     def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
-        for i in range(len(position)):
-            position[i] = 12-position[i]
+        pair = [[p, s] for p, s in zip(position, speed)] #we pair up for efficient computation
+        
+        stack = [] # the length of stack will be unique fleets 
 
-        time = []
-        for i in range(len(position)):
-            time.append(position[i]/speed[i])
-        print(position)
-        print(time)
-
-        ans = len(position)
-        visited = []
-        for i in range(len(position)):
-            fleet = 0
-            if i in visited:
-                continue
-            for j in range(len(position)):
-                if i==j:
-                    fleet += 1
-                    continue
-                if position[j] >= position[i] and time[j] <= time[i] and j not in visited:
-                    fleet += 1
-                    visited.append(j)
-            ans = ans - fleet + 1
-        return ans
+        for p, s in sorted(pair)[::-1]: #sort and start computation from car closest from the target
+            stack.append((target - p) / s) #append the time remaining
+            if len(stack) >= 2 and stack[-1] <= stack[-2]:
+                stack.pop()
+            
+        return len(stack)
