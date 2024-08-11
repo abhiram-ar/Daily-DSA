@@ -1,3 +1,5 @@
+//Write a C program to reverse the elements of an array
+
 #include <stdio.h>
 
 void reverse2pointer (int arr[], int size){
