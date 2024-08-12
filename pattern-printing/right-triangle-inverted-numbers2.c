@@ -1,5 +1,15 @@
 #include <stdio.h>
 
+/*
+
+1 6 10 13 15 
+2 7 11 14 
+3 8 12 
+4 9 
+5 
+
+*/
+
 int main(int argc, char const *argv[])
 {
     int n=5;
