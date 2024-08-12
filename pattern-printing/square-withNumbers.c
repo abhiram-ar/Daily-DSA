@@ -1,4 +1,14 @@
 #include <stdio.h>
+
+/*
+
+123*567
+12***67
+1*****7
+*******
+
+*/
+
 int main(int argc, char const *argv[])
 {
     int n=7;
