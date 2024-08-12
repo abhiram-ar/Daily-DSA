@@ -1,5 +1,15 @@
 #include <stdio.h>
 
+/*
+
+1A2B3C4D5E
+1A2B3C4D
+1A2B3C
+1A2B
+1A
+
+*/
+
 int main(int argc, char const *argv[])
 {
     int n= 5;
