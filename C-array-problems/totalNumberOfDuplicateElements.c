@@ -14,7 +14,9 @@ int main(int argc, char const *argv[])
         {
             if(arr[i]==arr[j]){
                 count++;
-                break;
+                break; 
+                // we break and  start from next rather than using flag
+
             }
         }
         
