@@ -12,7 +12,7 @@ int main(int argc, char const *argv[])
         printf("%d ",checked[i]);
     }
 
-    for (int i = 0; i < size-1; i++)
+    for (int i = 0; i < size; i++) //dont take i < size-1, because we will not take into consideration last element
     {
         if(checked[i] == 1) continue;
         int unique = 1;
