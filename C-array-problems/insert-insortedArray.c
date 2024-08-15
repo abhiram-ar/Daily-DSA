@@ -28,8 +28,8 @@ int main(int argc, char const *argv[])
             break;
         }
     }
-    
-    
+        
+
     for (int i = 0; i < size+1; i++)
     {
         printf("%d ",arr[i]);
