@@ -1,5 +1,15 @@
 #include <stdio.h>
 
+/*
+
+    1
+   232
+  34543
+ 4567654
+567898765
+
+*/
+
 int main(int argc, char const *argv[])
 {
     int n = 5;
