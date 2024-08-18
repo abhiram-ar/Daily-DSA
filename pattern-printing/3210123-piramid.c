@@ -11,7 +11,7 @@ int main()
         for(int j=0; j< 2*i+1 ; j++){
             int print = i-j;
             if(j>i) print = j - i;
-            //or use abs from stdlib.h;
+            //or use abs() from stdlib.
 
             printf("%d ", print);
         
