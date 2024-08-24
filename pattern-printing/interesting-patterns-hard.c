@@ -20,12 +20,12 @@ int main(int argc, char const *argv[])
     int n = 5;
 
     //upper part
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i <= n; i++)
     {
-        for (int j = 0; j < 2*n; j++)
+        for (int j = 1; j <= 2*n; j++)
         {  
            //left triangle
-           if(i+j<=n-1) printf("* ");
+           if(i+j<=n) printf("* ");
 
            //right triangle
            else if(i-(j-n) <= 0) printf("* ");
