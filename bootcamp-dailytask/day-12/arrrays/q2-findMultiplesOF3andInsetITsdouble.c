@@ -1,3 +1,5 @@
+// Write a program to find multiples of 3 and insert its double after that element
+
 #include <stdio.h>
 int main()
 {
