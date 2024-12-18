@@ -13,6 +13,5 @@ var canAliceWin = function(nums) {
             Dsum += num
         }
     })
-    console.log(Ssum, Dsum)
     return Ssum !== Dsum
 };
