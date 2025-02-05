@@ -4,10 +4,11 @@
  */
 var groupAnagrams = function (strs) {
     const hashmap = {}
+    let count = new Array(26)
     for (let str of strs) {
-        const count = new Array(26).fill(0)
+        count.fill(0)
         for (let char of str) {
-            count[char.charCodeAt(0) - "a".charCodeAt(0)] += 1
+            count[char.charCodeAt(0) - 97]++
         }
         const key = count.join(",")
         if (!hashmap[key]) {
