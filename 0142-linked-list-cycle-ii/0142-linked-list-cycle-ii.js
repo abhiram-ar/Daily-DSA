@@ -11,14 +11,20 @@
  * @return {ListNode}
  */
 var detectCycle = function (head) {
-    const visited = new Set
-    let curr = head
-    while (curr) {
-        if (visited.has(curr)) {
-            return curr
+    let slow = head
+    let fast = head
+    while(fast && fast.next){
+        fast = fast.next.next
+        slow = slow.next
+        
+        if(fast === slow){
+            slow = head
+            while(fast !== slow){
+                fast = fast.next
+                slow = slow.next
+            }
+            return fast
         }
-        visited.add(curr)
-        curr = curr.next
     }
     return null
 };
