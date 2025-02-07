@@ -4,10 +4,18 @@
  * @return {boolean}
  */
 var isSubsequence = function (s, t) {
-    let p = -1
-    for (let char of s) {
-        p = t.indexOf(char, p+1)
-        if (p === -1) return false
+    let p = 0
+    let q = 0
+
+    while (p < s.length && q < t.length) {
+        while (q < t.length) {
+            if (t[q] === s[p]) {
+                q++
+                p++
+                break
+            }
+            else q++
+        }
     }
-    return true
+    return p < s.length ? false : true
 };
