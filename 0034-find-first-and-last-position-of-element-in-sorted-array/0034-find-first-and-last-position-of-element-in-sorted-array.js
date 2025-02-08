@@ -19,6 +19,7 @@ var searchRange = function (nums, target) {
     }
     if(res[0] === -1) return res
 
+    // we dont need to reset l = 0, last occurance will be from fist occurance to last position
     r = nums.length - 1
     mid = undefined
     while (l <= r) {
