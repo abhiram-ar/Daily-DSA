@@ -12,6 +12,7 @@ var isValid = function (s) {
         else if (stack.length > 0 &&  map.get(char) === stack[stack.length - 1]) {
             stack.pop()
         }
+        // case where, invalid string exist in beginning: like "]"
         else return false
 
     }
