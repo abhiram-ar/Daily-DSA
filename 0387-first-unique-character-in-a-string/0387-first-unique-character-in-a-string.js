@@ -9,7 +9,6 @@ var firstUniqChar = function (s) {
         orderq.push([s[i], i])
         hashmap[s[i]] = (hashmap[s[i]] || 0) + 1
     }
-
     for (let [char, index] of orderq) {
         if (hashmap[char] === 1) return index
     }
