@@ -13,11 +13,11 @@
 var inorderTraversal = function (root) {
     let arr = []
     function inorder(root, arr) {
-        if (!root) return arr
+        if (!root) return 
         inorder(root.left, arr)
         arr.push(root.val)
         inorder(root.right, arr)
-        return arr
     }
-    return inorder(root, arr)
+    inorder(root, arr)
+    return arr 
 };
