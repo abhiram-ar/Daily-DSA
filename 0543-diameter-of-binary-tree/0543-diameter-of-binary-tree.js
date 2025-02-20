@@ -11,7 +11,7 @@
  * @return {number}
  */
 var diameterOfBinaryTree = function (root) {
-    let max = [0]
+    let max = [0] // pass by reference
     function height(root) {
         if (!root) return 0
         let lh = height(root.left, max)
