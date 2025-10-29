@@ -57,14 +57,14 @@ class KthLargest {
         this.size++
 
         while (i >= 0 && this.arr[this.parent(i)] > this.arr[i]) {
-            [this.arr[this.parent(i)], this.arr[i]] = [this.arr[i], this.arr[this.parent(i)]];
-            i = this.parent(i)
+            let parent = this.parent(i);
+            [this.arr[parent], this.arr[i]] = [this.arr[i], this.arr[parent]];
+            i = parent
         }
     }
 
     add(val: number): number {
-                                // duplicate handleing >=
-        if (this.size >= this.maxSize && val >= this.arr[0]) {
+        if (this.size >= this.maxSize && val > this.arr[0]) {
             this.popTop()
         }
         if (this.size < this.maxSize) {
