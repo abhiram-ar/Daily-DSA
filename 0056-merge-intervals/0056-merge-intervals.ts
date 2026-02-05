@@ -9,9 +9,12 @@ function merge(intervals: number[][]): number[][] {
             res.push(prev)
             prev = curr
         } else{
+            // edge: the prev closing range could be larger than the current closing range
             prev[1] = Math.max(curr[1], prev[1])
         }
     }
+
+    // edge: the last range will not be pused to the result
     res.push(prev)
     return res
 };
