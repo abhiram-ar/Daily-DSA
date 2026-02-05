@@ -1,16 +1,17 @@
 function findDuplicate(nums: number[]): number {
-    let slow: number = 0
-    let fast: number = 0
-    while(true){
+    let slow = 0
+    let fast = 0
+    while (true) {
         slow = nums[slow]
         fast = nums[nums[fast]]
         if(slow === fast) break
     }
 
-    let slow2 = 0
+    slow = 0
     while(true){
         slow = nums[slow]
-        slow2 = nums[slow2]
-        if(slow === slow2) return slow
+        fast = nums[fast]
+        if(slow === fast) break
     }
+    return slow
 };
