@@ -1,11 +1,20 @@
 function myPow(x: number, n: number): number {
-    if (n < 0) {
-        x = 1 / x
-        n = -n
+    let nn = n
+    let ans = 1
+
+    if (nn < 0) nn = -nn
+
+    while (nn>0) {
+        if (nn % 2 === 1) {
+            ans = ans * x
+            nn = nn - 1
+        } else {
+            x = x * x
+            nn = Math.floor(nn / 2)
+        }
     }
 
-    if (n === 0) return 1
-    if (n === 1) return x
-    if (n % 2 === 1) return x * myPow(x, n - 1)
-    else return myPow(x * x, Math.floor(n / 2))
+    if (n < 0) return 1 / ans
+
+    return ans
 };
