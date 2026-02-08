@@ -1,16 +1,16 @@
 function majorityElement(nums: number[]): number {
-    const count = new Map()
+    let elem
+    let count = 0
     for (let i = 0; i < nums.length; i++) {
-        if (!count.has(nums[i])) {
-            count.set(nums[i], 0)
+        if (count === 0) {
+            elem = nums[i]
         }
-        count.set(nums[i], count.get(nums[i]) + 1)
-    }
+        if (nums[i] === elem) {
+            count++
+        } else {
+            count--
+        }
+    };
+    return elem
 
-    // there would only be one majority element
-    for (let [k, v] of count) {
-        if (v > Math.floor(nums.length / 2)) {
-            return k
-        }
-    }
-};
+}
