@@ -7,13 +7,10 @@ function majorityElement(nums: number[]): number {
         count.set(nums[i], count.get(nums[i]) + 1)
     }
 
-    let largest = [undefined, -Infinity]
+    // there would only be one majority element
     for (let [k, v] of count) {
-        if (v > largest[1]) {
-            largest[0] = k
-            largest[1] = v
+        if (v > Math.floor(nums.length / 2)) {
+            return k
         }
     }
-
-    return largest[0]
 };
