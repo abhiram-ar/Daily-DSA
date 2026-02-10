@@ -1,14 +1,37 @@
 function majorityElement(nums: number[]): number[] {
-    const count = new Map()
+    let elem1
+    let count1 = 0
+
+    let elem2
+    let count2 = 0
+
     for (let i = 0; i < nums.length; i++) {
-        count.set(nums[i], (count.get(nums[i]) ?? 0) + 1)
+        if (count1 === 0 && nums[i] !== elem2) {
+            elem1 = nums[i]
+        }
+        if (count2 === 0 && nums[i] !== elem1) {
+            elem2 = nums[i]
+        }
+
+        if (nums[i] === elem1) {
+            count1++
+        } else if (nums[i] === elem2) {
+            count2++
+        } else {
+            count1--
+            count2--
+        }
     }
 
-    const res = new Set<number>()
-    for(let [k,v] of count){
-        if(v > (nums.length/3)) res.add(k)
+    count1 = 0
+    count2 = 0
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] === elem1) count1++
+        if (nums[i] === elem2) count2++
     }
 
-    return Array.from(res)
-
+    let ans = []
+    if (count1 > Math.floor(nums.length / 3)) ans.push(elem1)
+    if (count2 > Math.floor(nums.length / 3)) ans.push(elem2)
+    return ans
 };
