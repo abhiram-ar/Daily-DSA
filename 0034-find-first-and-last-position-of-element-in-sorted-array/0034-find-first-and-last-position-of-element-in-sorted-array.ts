@@ -17,9 +17,6 @@ function firstOccurance(arr: number[], k: number): number {
     let mid
     while (l <= r) {
         mid = Math.floor((l + r) / 2)
-
-        console.log(arr[mid])
-
         if (arr[mid] === k && (mid === 0 || arr[mid - 1] < k)) return mid
         else if (arr[mid] < k) l = mid + 1
         else r = mid - 1
