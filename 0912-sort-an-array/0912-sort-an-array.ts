@@ -1,3 +1,3 @@
 function sortArray(nums: number[]): number[] {
-    return nums.sort()
+    return nums.sort((a,b)=> a-b)
 };
