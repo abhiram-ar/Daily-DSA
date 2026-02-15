@@ -1,15 +1,16 @@
 function merge(arr, low, mid, high) {
-    let sorted = []
+    let sorted = Array(high - low + 1)
     let p1 = low
     let p2 = mid + 1
+    let p = 0
     while (p1 <= mid && p2 <= high) {
-        if (arr[p1] <= arr[p2]) sorted.push(arr[p1++])
-        else sorted.push(arr[p2++])
+        if (arr[p1] <= arr[p2]) sorted[p++] = arr[p1++]
+        else sorted[p++] = arr[p2++]
     }
-    while (p1 <= mid) sorted.push(arr[p1++])
-    while (p2 <= high) sorted.push(arr[p2++])
+    while (p1 <= mid) sorted[p++] = arr[p1++]
+    while (p2 <= high) sorted[p++] = arr[p2++]
 
-    let p = low
+    p = low
     for (let i = 0; i < sorted.length; i++) {
         arr[p++] = sorted[i]
     }
