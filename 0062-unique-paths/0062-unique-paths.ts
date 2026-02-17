@@ -1,5 +1,3 @@
-
-
 function uniquePaths(m: number, n: number): number {
     if (m === 1 || n === 1) return 1
 
@@ -9,14 +7,14 @@ function uniquePaths(m: number, n: number): number {
         matrix[i] = Array(n)
     }
 
-    for (let i = m - 1; i >= 0; i--) {
-        for (let j = n - 1; j >= 0; j--) {
-            if (i === m - 1 || j === n - 1) matrix[i][j] = 1
-            else matrix[i][j] = matrix[i + 1][j] + matrix[i][j + 1]
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (i === 0 || j === 0) matrix[i][j] = 1
+            else matrix[i][j] = matrix[i - 1][j] + matrix[i][j - 1]
         }
     }
 
-    return matrix[0][0]
+    return matrix[m-1][n-1]
 
 
 
