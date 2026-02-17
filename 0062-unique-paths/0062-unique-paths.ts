@@ -8,7 +8,7 @@ function uniquePaths(m: number, n: number): number {
 
     for (let i = 0; i < m; i++) {
         for (let j = 0; j < n; j++) {
-            if (i === 0 && j === 0) temp[j] = 1
+            if (i === 0 || j === 0) temp[j] = 1
             else temp[j] = dp[j] + (temp[j - 1] ?? 0)
         }
         swap = dp
