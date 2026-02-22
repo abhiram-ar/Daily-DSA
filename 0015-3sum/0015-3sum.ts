@@ -1,37 +1,25 @@
 function threeSum(nums: number[]): number[][] {
-    nums.sort((a, b) => a - b)
-    let res: [number, number, number][] = []
-
+    nums.sort((a,b)=> a-b)
+    console.log(nums)
+    let ans = []
     for (let i = 0; i < nums.length; i++) {
-        if (i > 0 && nums[i] === nums[i - 1]) {
-            continue // skip tripet starting with same i as prev
-        }
-
+        if (i > 0 && nums[i] === nums[i - 1]) continue
         let j = i + 1
         let k = nums.length - 1
         while (j < k) {
-            let threeSum = nums[i] + nums[j] + nums[k]
-            if (threeSum > 0) {
+            let sum = nums[i] + nums[j] + nums[k]
+            if (sum < 0) {
+                j++
+            } else if (sum > 0) {
                 k--
-            }
-            else if (threeSum < 0) {
-                j++
             } else {
-                res.push([nums[i], nums[j], nums[k]])
-                
-                // updating j pointer for next iteration if i
-                // when we increase j then we need to decrease k 
-                // to find another solution that sum-up to 0
+                ans.push([nums[i], nums[j], nums[k]])
                 j++
-                k-- 
-                
-                // avoiding thriplet starting with same j as prev
-                while (j < k && nums[j] === nums[j - 1] ) {
-                    j++
-                }
+                k--
+                while (j < k && nums[j] === nums[j - 1]) j++
+                while (j < k && nums[k] === nums[k + 1]) k--
             }
         }
-
     }
-    return res
+    return ans
 };
