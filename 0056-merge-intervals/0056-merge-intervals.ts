@@ -1,12 +1,5 @@
 function merge(intervals: number[][]): number[][] {
-    intervals.sort((a, b) => {
-        if (a[0] < b[0]) return -1
-        else if (a[0] === b[0]) {
-            if (a[1] < b[1]) return -1
-            else return 1
-        }
-        else return 1
-    })
+    intervals.sort((a, b) => a[0] - b[0])
 
     let ans = []
     for (let i = 0; i < intervals.length; i++) {
