@@ -10,7 +10,6 @@ function merge(intervals: number[][]): number[][] {
 
     let ans = []
     for (let i = 0; i < intervals.length; i++) {
-        // console.log(ans)
         if (ans.length === 0) {
             ans.push(intervals[i])
             continue
