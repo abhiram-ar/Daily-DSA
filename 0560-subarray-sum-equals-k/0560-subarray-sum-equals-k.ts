@@ -13,9 +13,6 @@ function subarraySum(nums: number[], k: number): number {
             count += prefixMap.get(rem)
         }
 
-        // we need to longest subarry, so we avoid overriding the 
-        // earlier prexifSum idx with newer idx
-
         prefixMap.set(cummSum, (prefixMap.get(cummSum) ?? 0) + 1)
 
     }
