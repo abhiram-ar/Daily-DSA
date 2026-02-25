@@ -10,7 +10,7 @@ function subarraySum(nums: number[], k: number): number {
         cummSum += nums[i];
 
         let rem = cummSum - k;
-        count += prefixMap.get(rem) ?? 0
+        count += prefixMap.get(rem) || 0
 
         prefixMap.set(cummSum, (prefixMap.get(cummSum) || 0) + 1);
     }
