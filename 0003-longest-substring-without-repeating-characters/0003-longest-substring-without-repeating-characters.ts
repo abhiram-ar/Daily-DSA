@@ -1,14 +1,14 @@
 function lengthOfLongestSubstring(s: string): number {
-    let map = new Map()
     let longest = 0
     let l = 0
+    let hash = new Map()
     for (let r = 0; r < s.length; r++) {
-        if (map.get(s[r]) >= l) {
-            l = map.get(s[r]) + 1
-        }
+        if (hash.get(s[r]) >= l) l = hash.get(s[r]) + 1
+ 
+        hash.set(s[r], r)
 
         longest = Math.max(longest, r - l + 1)
-        map.set(s[r], r)
+
     }
     return longest
 };
