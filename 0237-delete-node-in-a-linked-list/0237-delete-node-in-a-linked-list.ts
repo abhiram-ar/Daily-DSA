@@ -15,9 +15,10 @@
  */
 function deleteNode(node: ListNode | null): void {
     let nextNode = node.next
-    
     node.val = node.next.val
     node.next = node.next.next
-    
+
     nextNode.next = null
+
+    
 };
