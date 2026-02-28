@@ -14,26 +14,29 @@ function isPalindrome(head: ListNode | null): boolean {
     if (!head.next) return true
     let slow = head
     let fast = head
-    const st = []
+    let prev = null
+    let curr
 
     while (fast && fast.next) {
-        st.push(slow.val)
+        let curr = slow
         slow = slow.next
         fast = fast.next.next
+
+        curr.next = prev
+        prev = curr
     }
 
-    // even length list
+    // odd length list
     if (fast) {
         slow = slow.next
     }
 
     while (slow) {
-        if (st.at(-1) === slow.val) st.pop()
-        else return false
+        if (slow.val !== prev.val) return false
         slow = slow.next
+        prev = prev.next
     }
 
-    return st.length === 0
-
+    return true
 
 };
