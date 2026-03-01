@@ -11,18 +11,33 @@
  */
 
 function getIntersectionNode(headA: ListNode | null, headB: ListNode | null): ListNode | null {
-    if (!headB || !headA) return null
+    if (!headA || !headB) return null
 
-    const hash = new Set()
+    let end
     let curr = headA
-    while (curr) {
-        hash.add(curr)
-        curr = curr.next
+    while (curr.next) curr = curr.next
+
+    end = curr
+    end.next = headB
+
+    let fast = headA
+    let slow = headA
+    while (fast && fast.next) {
+        slow = slow.next
+        fast = fast.next.next
+        if (slow === fast) {
+            slow = headA
+            while (slow !== fast) {
+                slow = slow.next
+                fast = fast.next
+            }
+            end.next = null
+            return fast
+        }
     }
-    curr = headB
-    while (curr) {
-        if (hash.has(curr)) return curr
-        curr = curr.next
-    }
+    end.next = null
     return null
+
+
+
 };
