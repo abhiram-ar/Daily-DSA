@@ -11,33 +11,13 @@
  */
 
 function getIntersectionNode(headA: ListNode | null, headB: ListNode | null): ListNode | null {
-    if (!headA || !headB) return null
+    let pA = headA;
+    let pB = headB;
 
-    let end
-    let curr = headA
-    while (curr.next) curr = curr.next
-
-    end = curr
-    end.next = headB
-
-    let fast = headA
-    let slow = headA
-    while (fast && fast.next) {
-        slow = slow.next
-        fast = fast.next.next
-
-        if (slow === fast) {
-            slow = headA
-            while (slow !== fast) {
-                slow = slow.next
-                fast = fast.next
-            }
-
-            end.next = null
-            return fast
-        }
+    while(pA != pB){
+        pA = pA === null ? headB : pA.next;
+        pB = pB === null ? headA : pB.next;
     }
 
-    end.next = null
-    return null
+    return pA
 };
