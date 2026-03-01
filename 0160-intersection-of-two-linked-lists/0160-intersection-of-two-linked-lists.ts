@@ -28,7 +28,6 @@ function getIntersectionNode(headA: ListNode | null, headB: ListNode | null): Li
 
         if (slow === fast) {
             slow = headA
-
             while (slow !== fast) {
                 slow = slow.next
                 fast = fast.next
