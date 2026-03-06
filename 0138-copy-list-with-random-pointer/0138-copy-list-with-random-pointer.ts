@@ -42,8 +42,8 @@ function copyRandomList(head: _Node | null): _Node | null {
         newPrev.next = oldCurr.next
 
         newPrev = oldCurr.next
-        oldCurr.next = newPrev.next
-        oldCurr = newPrev.next
+        oldCurr.next = oldCurr.next.next
+        oldCurr = oldCurr.next
     }
 
     return newDummy.next
