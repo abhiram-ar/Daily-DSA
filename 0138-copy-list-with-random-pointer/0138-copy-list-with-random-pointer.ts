@@ -17,8 +17,9 @@
 function copyRandomList(head: _Node | null): _Node | null {
     // inset new node in between old nodes
     let curr = head
+    let newCopy
     while (curr) {
-        const newCopy = new _Node(curr.val)
+        newCopy = new _Node(curr.val)
         newCopy.next = curr.next
 
         curr.next = newCopy
@@ -28,8 +29,8 @@ function copyRandomList(head: _Node | null): _Node | null {
     // connect random pointer
     curr = head
     while (curr) {
-        let copyNode = curr.next
-        copyNode.random = curr.random?.next // could be null
+        newCopy = curr.next
+        newCopy.random = curr.random?.next // could be null
 
         curr = curr.next.next
     }
