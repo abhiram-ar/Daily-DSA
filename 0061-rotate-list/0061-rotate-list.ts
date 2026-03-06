@@ -10,40 +10,34 @@
  * }
  */
 
+function findKthNode(node, k) {
+    let cnt = 1
+    while (node) {
+        if (cnt === k) return node
+        node = node.next
+        cnt++
+    }
+    return node
+}
+
 function rotateRight(head: ListNode | null, k: number): ListNode | null {
     if (!head) return null
-    if (k === 0) return head
-
-    let size = 0
     let curr = head
-    let prev = null
+    let size = 1
 
-    while (curr) {
-        size++
-        prev = curr
+    while (curr.next) {
         curr = curr.next
+        size++
     }
 
-    let effectiveRotation = (k % size)
-    if (effectiveRotation === 0) return head
+    let effRotation = k % size
+    if (effRotation === 0) return head
 
-    // finding kth element
-    let slow = head
-    let fast = head
+    let newLastNode = findKthNode(head, size - effRotation)
 
-    for (let i = 0; i < effectiveRotation; i++) {
-        fast = fast.next
-    }
-
-    while(fast.next){
-        fast = fast.next
-        slow = slow.next
-    }
-
-    fast.next = head
-    head = slow.next
-    slow.next = null
+    curr.next = head
+    head = newLastNode.next
+    newLastNode.next = null
 
     return head
-
 };
