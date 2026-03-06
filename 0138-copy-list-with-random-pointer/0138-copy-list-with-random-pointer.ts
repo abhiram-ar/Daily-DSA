@@ -15,23 +15,36 @@
 
 
 function copyRandomList(head: _Node | null): _Node | null {
-    const old2New = new Map<_Node, _Node>()
-    old2New.set(null, null)
+    // inset new node in between old nodes
+    let curr = head
+    while (curr) {
+        const newCopy = new _Node(curr.val)
+        newCopy.next = curr.next
+
+        curr.next = newCopy
+        curr = curr.next.next
+    }
+
+    // connect random pointer
+    curr = head
+    while (curr) {
+        let copyNode = curr.next
+        copyNode.random = curr.random?.next // could be null
+
+        curr = curr.next.next
+    }
+
+    const newDummy = new _Node(0)
+    let newPrev = newDummy
     let oldCurr = head
 
     while (oldCurr) {
-        if (!old2New.has(oldCurr)) old2New.set(oldCurr, new _Node(0))
-        const newNode = old2New.get(oldCurr)
-        newNode.val = oldCurr.val
+        newPrev.next = oldCurr.next
 
-        if (!old2New.has(oldCurr.next)) old2New.set(oldCurr.next, new _Node(0))
-        newNode.next = old2New.get(oldCurr.next)
-
-        if (!old2New.has(oldCurr.random)) old2New.set(oldCurr.random, new _Node(0))
-        newNode.random = old2New.get(oldCurr.random)
-
-        oldCurr = oldCurr.next
+        newPrev = oldCurr.next
+        oldCurr.next = newPrev.next
+        oldCurr = newPrev.next
     }
 
-    return old2New.get(head)
+    return newDummy.next
 };
