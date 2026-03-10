@@ -26,7 +26,7 @@ function maxPathSum(root: TreeNode | null): number {
         let currSum = ls + rs + node.val
         mx[0] = Math.max(mx[0], currSum)
 
-        return Math.max(node.val, 0) + Math.max(ls, rs, 0) // 0 => slip -ve sum
+        return Math.max(node.val + ls, node.val + rs, node.val, 0)  // 0 => slip -ve sum
     }
 
     dfsSum(root, mx)
