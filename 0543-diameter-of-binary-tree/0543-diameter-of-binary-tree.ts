@@ -15,7 +15,7 @@
 function diameterOfBinaryTree(root: TreeNode | null): number {
     if (!root) return 0
 
-    let mx = [0]
+    let mx:[number] = [0]
 
     function dfs(node: TreeNode | null, mx: [number]): number {
         if (!node) return 0
