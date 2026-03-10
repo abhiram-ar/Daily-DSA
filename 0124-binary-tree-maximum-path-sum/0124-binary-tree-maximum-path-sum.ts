@@ -20,13 +20,13 @@ function maxPathSum(root: TreeNode | null): number {
     function dfsSum(node: TreeNode | null, mx: [number]): number {
         if (!node) return 0
 
-        let ls = Math.max(0, dfsSum(node.left, mx)) // 0 => slip -ve sum
-        let rs = Math.max(0, dfsSum(node.right, mx))
+        let ls = dfsSum(node.left, mx)
+        let rs = dfsSum(node.right, mx)
 
         let currSum = ls + rs + node.val
         mx[0] = Math.max(mx[0], currSum)
 
-        return node.val + Math.max(ls, rs) 
+        return Math.max(node.val, 0) + Math.max(ls, rs, 0) // 0 => slip -ve sum
     }
 
     dfsSum(root, mx)
