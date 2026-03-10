@@ -14,18 +14,19 @@
 
 function lowestCommonAncestor(root: TreeNode | null, p: TreeNode | null, q: TreeNode | null): TreeNode | null {
 
-    function dfsHas(root: TreeNode | null, key: TreeNode): { found: boolean, node?: TreeNode | null } {
-        if (!root) return { found: false }
+    function dfsHas(root: TreeNode | null, key: TreeNode): boolean {
+        if (!root) return false
 
-        if (root.val === key.val) return { found: true, node: root }
+        if (root.val === key.val) return true
+        else if (root.val > key.val) {
+            let lr = dfsHas(root.left, key)
+            return lr
+        } else {
+            let rr = dfsHas(root.right, key)
+            return rr
+        }
 
-        let lr = dfsHas(root.left, key)
-        if (lr.found) return lr
-
-        let rr = dfsHas(root.right, key)
-        if (rr.found) return rr
-
-        return { found: false }
+        return false
     }
 
     function dfs(node: TreeNode | null): TreeNode | null {
@@ -40,7 +41,7 @@ function lowestCommonAncestor(root: TreeNode | null, p: TreeNode | null, q: Tree
         let fp = dfsHas(node, p)
         let fq = dfsHas(node, q)
 
-        if (fp.found && fq.found) return node
+        if (fp && fq) return node
 
         return null
 
