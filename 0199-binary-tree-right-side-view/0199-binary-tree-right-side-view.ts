@@ -13,19 +13,17 @@
  */
 
 function rightSideView(root: TreeNode | null): number[] {
-    if (!root) return []
-    let q = [root]
-    let ans: number[] = []
-    while (q.length > 0) {
-        let levelLength = q.length
-        for (let i = 0; i < levelLength; i++) {
-            let node = q.shift()
-            if (node.left) q.push(node.left)
-            if (node.right) q.push(node.right)
-            if (i === levelLength - 1) {
-                ans.push(node.val)
-            }
-        }
+    let ans = []
+    function reversePostOrder(node, level) {
+        if(!node) return
+
+        // first element added in a level 
+        if(ans.length === level) ans.push(node.val)
+
+        // first to to the right in reveser post post order
+        if(node.right) reversePostOrder(node.right, level+1) 
+        if(node.left) reversePostOrder(node.left, level+1) 
     }
+    reversePostOrder(root, 0)
     return ans
 };
