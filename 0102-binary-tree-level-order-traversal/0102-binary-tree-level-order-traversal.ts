@@ -13,19 +13,22 @@
  */
 
 function levelOrder(root: TreeNode | null): number[][] {
-    if(!root) return []
-    
-    let q: [TreeNode, number][] = []
-    q.push([root, 0])
+    if (!root) return []
 
-    let ans:number[][] = []
+    let q: TreeNode[] = []
+    q.push(root)
+
+    let ans: number[][] = []
     while (q.length > 0) {
-        let [node, level] = q.shift()
-        if (node.left) q.push([node.left, level + 1])
-        if (node.right) q.push([node.right, level + 1])
-
-        if(ans[level] === undefined) ans[level] = []
-        ans[level].push(node.val)
+        let levelSize = q.length
+        let levelValues = []
+        for (let i = 0; i < levelSize; i++) {
+            let node = q.shift()
+            levelValues.push(node.val)
+            if (node.left) q.push(node.left)
+            if (node.right) q.push(node.right)
+        }
+        ans.push(levelValues)
     }
 
     return ans
