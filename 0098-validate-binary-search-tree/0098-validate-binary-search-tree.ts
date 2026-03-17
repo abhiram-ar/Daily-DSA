@@ -13,24 +13,11 @@
  */
 
 function isValidBST(root: TreeNode | null): boolean {
+    function isValid(node: TreeNode | null, min: number, max: number) boolean{
+        if (!node) return true
+        if (node.val >= min || node.val <= max) return false
 
-    // postorder DFS
-    function dfs(node: TreeNode | null): [number, number, boolean] {
-        if (!node) return [Infinity, -Infinity, true]
-        let lres = dfs(node.left)
-        let rres = dfs(node.right)
-
-        let isValid = true
-        if (lres[1] >= node.val) isValid = false
-        if (rres[0] <= node.val) isValid = false
-        if (lres[2] === false || rres[2] === false) isValid = false
-
-        let min = Math.min(node.val, lres[0], rres[0])
-        let max = Math.max(node.val, lres[1], rres[1])
-
-        return [min, max, isValid]
+        return isValid(node.left, min, node.val) &&
+            isValid(node.right, node.val, max)
     }
-
-    let res = dfs(root)
-    return res[2]
 };
