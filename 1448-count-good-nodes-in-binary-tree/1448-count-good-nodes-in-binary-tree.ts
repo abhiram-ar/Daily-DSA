@@ -14,10 +14,12 @@
 
 function goodNodes(root: TreeNode | null): number {
     let count = 0
-    function dfs(node: TreeNode | null, max: number){
-        if(!node) return
-        if(max <= node.val) count++
-        max = Math.max(max, node.val)
+    function dfs(node: TreeNode | null, max: number) {
+        if (!node) return
+        if (max <= node.val) {
+            count++
+            max = Math.max(max, node.val)
+        }
         dfs(node.left, max)
         dfs(node.right, max)
     }
