@@ -16,12 +16,8 @@ function searchBST(root: TreeNode | null, val: number): TreeNode | null {
     if(!root) return null
     
     if(root.val === val) return root
-
-    let lres = searchBST(root.left, val)
-    if(lres) return lres
-
-    let rres = searchBST(root.right, val)
-    if(rres) return rres
+    else if(val < root.val) return searchBST(root.left, val)
+    else return searchBST(root.right,val)
 
     return null
     
