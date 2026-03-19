@@ -25,13 +25,13 @@ function buildTree(preorder: number[], inorder: number[]): TreeNode | null {
     function build(preStart, preEnd, inStart, inEnd): TreeNode | null {
         if(preStart > preEnd || inStart > inEnd) return null
 
-        const subTreeRoot = new TreeNode(preorder[preStart])
-        const subTreeRootInOrderIdx = inOrderIdxHash.get(subTreeRoot.val) as number
-        const numsLeftInOrder = subTreeRootInOrderIdx - inStart
+        const root = new TreeNode(preorder[preStart])
+        const rootInOrderIdx = inOrderIdxHash.get(root.val) as number
+        const numsLeftInOrder = rootInOrderIdx - inStart
 
-        subTreeRoot.left = build(preStart + 1, preStart + numsLeftInOrder, inStart, subTreeRootInOrderIdx - 1)
-        subTreeRoot.right = build(preStart + numsLeftInOrder + 1, preEnd, subTreeRootInOrderIdx + 1, inEnd)
+        root.left = build(preStart + 1, preStart + numsLeftInOrder, inStart, rootInOrderIdx - 1)
+        root.right = build(preStart + numsLeftInOrder + 1, preEnd, rootInOrderIdx + 1, inEnd)
 
-        return subTreeRoot
+        return root
     }
 };
