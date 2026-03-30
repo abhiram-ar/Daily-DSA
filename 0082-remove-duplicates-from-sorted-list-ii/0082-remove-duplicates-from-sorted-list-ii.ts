@@ -25,7 +25,6 @@ function deleteDuplicates(head: ListNode | null): ListNode | null {
             dup = true
             ahead = ahead.next
         }
-        console.log('check', curr, ahead, dup)
 
         if (!dup) {
             prev.next = curr
