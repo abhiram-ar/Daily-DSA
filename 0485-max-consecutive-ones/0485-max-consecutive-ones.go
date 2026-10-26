@@ -1,8 +1,5 @@
 func findMaxConsecutiveOnes(nums []int) int {
-	var (
-		cnt = 0
-		mx  = 0
-	)
+	var cnt, mx int
 
 	for _, n := range nums {
 		if n == 1 {
