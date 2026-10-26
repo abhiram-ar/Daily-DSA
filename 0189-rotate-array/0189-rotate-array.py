@@ -4,17 +4,18 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
 
-        k = len(nums) - k % len(nums) 
-        temp = []
+        n = len(nums)
+        k = k % n 
 
-        for i in range(k):
-            temp.append(nums[i])
-        
+        if k == 0:
+            return 
+
+        temp = nums[:n-k]
+
+        for i in range(n-k, n):
+            nums[i - (n-k)] = nums[i]
+
         for i in range(k, len(nums)):
-            nums[i - k] = nums[i]
-    
-
-        for i in range(len(nums) - k, len(nums)):
-            nums[i] = temp[i - (len(nums) - k)]
+            nums[i] = temp[i - k]
 
         
