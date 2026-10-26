@@ -7,8 +7,6 @@ class Solution:
         n = len(nums)
         k = k % n 
 
-        if k == 0:
-            return 
 
         temp = nums[:n-k]
 
