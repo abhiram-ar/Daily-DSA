@@ -1,6 +1,5 @@
 class Solution:
     def removeDuplicates(self, nums: list[int]) -> int:
-        k = 0
         l = 0
         
         for r, num in enumerate(nums):
@@ -9,8 +8,7 @@ class Solution:
             
             l += 1
             nums[l], nums[r] = nums[r], nums[l]
-            k += 1
 
-        return k + 1
+        return l + 1  # count will be 1 more than the 0-index position
 
         
