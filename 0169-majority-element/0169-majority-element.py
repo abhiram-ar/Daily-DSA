@@ -1,19 +1,15 @@
 class Solution:
     def majorityElement(self, nums: list[int]) -> int:
-        freq = {}
-        
+        elem = None
+        count = 0
+
         for n in nums:
-            freq[n] = freq.get(n, 0) + 1
-        
-        largest = 0
-        largestFreq = float("-inf")
+            if count == 0:
+                elem = n
+            
+            if elem == n:
+                count += 1
+            else:
+                count -= 1
 
-        print(freq)
-
-        for k,v in freq.items():
-            if v >= largestFreq:
-                largest = k
-                largestFreq = v
-
-        return largest
-        
+        return elem
