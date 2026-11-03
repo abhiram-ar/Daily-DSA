@@ -1,20 +1,20 @@
 class Solution:
     def rearrangeArray(self, nums: list[int]) -> list[int]:
-        even = []
-        odd = []
+        positive = []
+        negative = []
 
         for n in nums:
             if n >= 0:
-                even.append(n)
+                positive.append(n)
             else:
-                odd.append(n)
+                negative.append(n)
 
         ans = []
         i = 0
 
-        while(i < len(even)):
-            ans.append(even[i])
-            ans.append(odd[i])
+        while(i < len(positive)):
+            ans.append(positive[i])
+            ans.append(negative[i])
             i += 1
         
 
