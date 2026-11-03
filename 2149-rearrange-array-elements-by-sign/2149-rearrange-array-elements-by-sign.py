@@ -9,14 +9,10 @@ class Solution:
             else:
                 negative.append(n)
 
-        ans = []
-        i = 0
+        for i in range(len(nums)//2):
+            nums[i*2] = positive[i]
+            nums[(i*2)+1] = negative[i]
 
-        while(i < len(positive)):
-            ans.append(positive[i])
-            ans.append(negative[i])
-            i += 1
-        
 
-        return ans
+        return nums
         
